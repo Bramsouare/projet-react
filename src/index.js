@@ -1,17 +1,59 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from 'react';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function App() {
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  const [nom, setNom] = useState ('');
+  const [prenom, setPrenom] = useState ('');
+
+  const handleChangeNom = (e) => 
+  {
+    setNom ( e . target . value );
+  };
+
+  const handleChangePrenom = (e) => 
+  {
+    setPrenom ( e . target . value );
+  };
+
+  const handleSubmit = (e) => 
+  {
+    e . preventDefault ();
+    alert (`Bonjour ${prenom} ${nom} !`);
+  };
+
+  return (
+
+    <div>
+
+      <form onSubmit= {handleSubmit}>
+
+        <label>
+
+          Nom :
+
+          <input type="text" value= {nom} onChange= {handleChangeNom} />
+
+        </label><br></br>
+
+        <br />
+
+        <label>
+
+          Prénom :
+
+          <input type="text" value= {prenom} onChange= {handleChangePrenom} />
+
+        </label><br></br>
+
+        <br />
+        
+        <button type= "submit">Envoyer</button>
+
+      </form>
+
+    </div>
+
+  );
+}
+
+export default App;
